@@ -1,6 +1,7 @@
 package com.gupaoedu.mybatis.gp.config;
 
 import com.gupaoedu.mybatis.gp.executor.Executor;
+import com.gupaoedu.mybatis.gp.plugin.MyInterceptor;
 import com.gupaoedu.mybatis.gp.plugin.MyInterceptorChain;
 
 import java.io.IOException;
@@ -14,12 +15,18 @@ public class GpConfiguration {
 
     protected final MyInterceptorChain interceptorChain = new MyInterceptorChain();
 
+    private String inteceptor = null;
+
+    {
+        inteceptor = "com.gupaoedu.mybatis.gp.MyTestPlugin";
+    }
+
     private String scanPath;
 
     private MapperRegistory mapperRegistory = new MapperRegistory();
 
-    public Executor newExecutor(Executor executor) {
-        return (Executor) interceptorChain.pluginAll(executor);
+    public Object newExecutor(Object object) {
+        return (Object) interceptorChain.pluginAll(object);
     }
 
     public GpConfiguration scanPath(String scanPath) {
@@ -27,13 +34,22 @@ public class GpConfiguration {
         return this;
     }
 
-    public void build() throws IOException {
+    public void build() throws Exception {
         if (null == scanPath || scanPath.length() < 1) {
             throw new RuntimeException("scan path is required .");
         }
+        if (inteceptor != null) {
+            MyInterceptor myInterceptor = (MyInterceptor)Class.forName(inteceptor).newInstance();
+            addInterceptor(myInterceptor);
+        }
+
     }
 
-    public static void main(String[] args) throws IOException {
+    public void addInterceptor(MyInterceptor interceptor) {
+        this.interceptorChain.addInterceptor(interceptor);
+    }
+
+    public static void main(String[] args) throws Exception {
         new GpConfiguration().scanPath("com/gupaoedu/mybatis/gp/config/mappers").build();
     }
 

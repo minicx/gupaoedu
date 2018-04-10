@@ -14,16 +14,16 @@ import java.io.IOException;
  * 老师咨询 QQ 2904270631
  */
 public class BootStrap {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         start();
     }
 
-    private static void start() throws IOException {
+    private static void start() throws Exception {
         GpConfiguration configuration = new GpConfiguration();
         configuration.setScanPath("com.gupaoedu.mybatis.gp.config.mappers");
         configuration.build();
         GpSqlSession sqlSession = new GpSqlSession(configuration,
-                ExecutorFactory.get(ExecutorFactory.ExecutorType.CACHING.name(),configuration));
+                ExecutorFactory.get(ExecutorFactory.ExecutorType.SIMPLE.name(),configuration));
         TestMapper testMapper = sqlSession.getMapper(TestMapper.class);
         long start = System.currentTimeMillis();
         Test test = testMapper.selectByPrimaryKey(1);

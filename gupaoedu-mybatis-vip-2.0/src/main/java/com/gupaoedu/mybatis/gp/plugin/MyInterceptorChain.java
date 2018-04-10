@@ -14,20 +14,20 @@ import java.util.List;
  */
 public class MyInterceptorChain {
 
-    private final List<Interceptor> interceptors = new ArrayList<Interceptor>();
+    private final List<MyInterceptor> interceptors = new ArrayList<MyInterceptor>();
 
     public Object pluginAll(Object target) {
-        for (Interceptor interceptor : interceptors) {
+        for (MyInterceptor interceptor : interceptors) {
             target = interceptor.plugin(target);
         }
         return target;
     }
 
-    public void addInterceptor(Interceptor interceptor) {
+    public void addInterceptor(MyInterceptor interceptor) {
         interceptors.add(interceptor);
     }
 
-    public List<Interceptor> getInterceptors() {
+    public List<MyInterceptor> getInterceptors() {
         return Collections.unmodifiableList(interceptors);
     }
 }

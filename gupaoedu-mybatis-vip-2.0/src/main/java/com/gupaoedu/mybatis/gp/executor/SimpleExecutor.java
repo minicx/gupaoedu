@@ -19,10 +19,12 @@ public class SimpleExecutor implements Executor {
         this.configuration = configuration;
     }
 
+    @Override
     public <E> E query(MapperRegistory.MapperData mapperData, Object parameter)
             throws Exception {
             //初始化StatementHandler --> ParameterHandler --> ResultSetHandler
             StatementHandler handler = new StatementHandler(configuration);
+//            this.configuration.newExecutor(this);
             return (E) handler.query(mapperData, parameter);
     }
 }
