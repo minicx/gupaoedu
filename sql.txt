@@ -1,0 +1,15 @@
+CREATE TABLE `test` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `nums` int(20) DEFAULT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `posts` (
+  `pid` int(20) NOT NULL,
+  `postName` varchar(30) DEFAULT NULL,
+  `blogId` int(20) DEFAULT NULL,
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `test` VALUES ('1', '1', 'fdf');
