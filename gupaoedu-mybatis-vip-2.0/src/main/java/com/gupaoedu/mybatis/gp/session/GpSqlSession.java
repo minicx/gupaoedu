@@ -32,7 +32,7 @@ public class GpSqlSession {
     }
 
     public <T> T selectOne(MapperRegistory.MapperData mapperData, Object parameter) throws Exception {
-//        configuration.newExecutor(executor);
+        executor  = (Executor)configuration.newExecutor(executor);
 
         return executor.query(mapperData, parameter);
     }
