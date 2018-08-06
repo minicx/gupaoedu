@@ -1,3 +1,11 @@
 gupaoedu-mybatis-vip-2.0.zip
 源码分析二20180408作业.txt
 源码地址.txt
+*.class
+*.jar
+.idea/*
+designPattern\target\*
+*.lst
+designPattern/target/*
+.idea\*
+.idea/uiDesigner.xml

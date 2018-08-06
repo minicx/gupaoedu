@@ -32,6 +32,7 @@ public class StatementHandler {
                     Integer.parseInt(String.valueOf(parameter))));
             pstmt.execute();
             //ResultSetHandler
+            this.configuration.newExecutor(resultSetHandler);
             return (E)resultSetHandler.handle(pstmt.getResultSet(),mapperData.getType());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,9 +44,9 @@ public class StatementHandler {
 
     public Connection getConnection() throws SQLException {
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://101.132.109.194:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String url = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String username = "root";
-        String password = "huangbei";
+        String password = "root";
         Connection conn = null;
         try {
             Class.forName(driver); //classLoader,加载对应驱动

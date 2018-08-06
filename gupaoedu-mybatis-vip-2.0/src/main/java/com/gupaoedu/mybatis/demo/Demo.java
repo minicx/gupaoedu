@@ -19,7 +19,7 @@ public class Demo {
     public static SqlSession getSqlSession() throws FileNotFoundException {
         //配置文件
         InputStream configFile = new FileInputStream(
-                "X:\\咕泡\\gupaoedu-mybatis-vip-2.0\\src\\main\\java\\com\\gupaoedu\\mybatis\\demo\\mybatis-config.xml");
+                "F:\\github\\gupaoedu\\gupaoedu-mybatis-vip-2.0\\src\\main\\java\\com\\gupaoedu\\mybatis\\demo\\mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configFile);
         //加载配置文件得到SqlSessionFactory
         return sqlSessionFactory.openSession();
