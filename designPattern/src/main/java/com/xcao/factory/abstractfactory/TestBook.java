@@ -1,5 +1,7 @@
 package com.xcao.factory.abstractfactory;
 
+import java.lang.management.ManagementFactory;
+
 /**
  * @Author:caoxiang
  * @Description:
@@ -7,7 +9,15 @@ package com.xcao.factory.abstractfactory;
  * @Modified By;
  */
 public class TestBook {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // get name representing the running Java virtual machine.
+        String name = ManagementFactory.getRuntimeMXBean().getName();
+        System.out.println(name);
+        // get pid
+        String pid = name.split("@")[0];
+        System.out.println("Pid is:" + pid);
+
+        Thread.sleep(100000);
         BookFactory history = new HistoryBookFactory();
         history.createBook().read();
 
