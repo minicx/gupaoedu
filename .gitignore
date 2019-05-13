@@ -9,3 +9,4 @@ designPattern\target\*
 designPattern/target/*
 .idea\*
 .idea/uiDesigner.xml
+designPattern/.idea/
