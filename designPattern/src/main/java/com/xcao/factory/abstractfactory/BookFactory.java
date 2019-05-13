@@ -10,5 +10,5 @@ import com.xcao.factory.Books.Book;
  */
 public interface BookFactory {
 
-    public Book createBook();
+    Book createBook();
 }
